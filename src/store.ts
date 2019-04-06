@@ -6,21 +6,37 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    USA: []
+    USA: [],
+    International: []
   },
   mutations: {
-    setLocations(state, payload) {
+    setUSAData(state, payload) {
       state.USA = payload;
+    },
+    setInternationalData(state, payload) {
+      state.International = payload;
     }
   },
   actions: {
-    GET_LOCATIONS({ state, commit }, payload) {
-      return new Promise((resolve, reject) => {
+    GET_USA_DATA({ state, commit }) {
+      return new Promise((resolve) => {
           if (state.USA.length > 0) {
               resolve(state.USA);
           } else {
-            axios.get(process.env.VUE_APP_MAIN_CONTENT_ENDPOINT).then((res)=>{
-              commit('setLocations', res);
+            axios.get(process.env.VUE_APP_USA_CONTENT_ENDPOINT).then((res)=>{
+              commit('setUSAData', res);
+              resolve(res);
+            });
+          }
+      });
+    },
+    GET_INTERNATIONAL_DATA({ state, commit }) {
+      return new Promise((resolve) => {
+          if (state.International.length > 0) {
+              resolve(state.International);
+          } else {
+            axios.get(process.env.VUE_APP_INTERNATIONAL_CONTENT_ENDPOINT).then((res)=>{
+              commit('setInternationalData', res);
               resolve(res);
             });
           }
@@ -29,7 +45,10 @@ export default new Vuex.Store({
   },
   getters: {
     getUSA(state) {
-        return state.USA;
+      return state.USA;
+    },
+    getInternational(state) {
+      return state.International;
     }
   }
 });

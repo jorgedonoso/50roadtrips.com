@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>United States</h1>
-    <locations-table :data="USA"/>
+    <locations-table :data="USA" />
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default Vue.extend({
     }
   },
   created(){
-    this.$store.dispatch("GET_LOCATIONS").then((res) => {
+    this.$store.dispatch("GET_USA_DATA").then((res) => {
       this.USA = res.data.items;
     });
   }
