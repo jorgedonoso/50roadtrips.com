@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import USA from './views/USA.vue';
 import International from './views/International.vue';
+import Country from './views/Country.vue';
 
 Vue.use(Router);
 
@@ -27,7 +28,7 @@ export default new Router({
     },
     { 
       path: '/international/:country', 
-      component: International
+      component: Country
     }
   ],
 });

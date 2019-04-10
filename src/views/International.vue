@@ -2,7 +2,9 @@
   <div>
     <h1>International</h1>
     <ul>
-      <li v-for="country in International" :key="country.id">{{country.fields.countryName}}</li>
+      <li v-for="country in International" :key="country.id">
+        <router-link :to="'/international/' + country.fields.countryName">{{country.fields.countryName}}</router-link>
+      </li>
     </ul>
   </div>
 </template>
