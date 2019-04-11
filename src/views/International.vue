@@ -5,10 +5,10 @@
       v-for="country in internationalData"
       :key="country.id"
     >
-      <router-link :to="'/international/' + country.fields.countryName">
+      <router-link :to="'/international/' + country.fields.countryName.toLowerCase()">
         <h2>{{country.fields.countryName}}</h2>
         <img
-          :src="findImageSrcById(country.fields.cover.sys.id)"
+          :src="findImageSrcById(country.fields.cover.sys.id, images,768)"
           :alt="'photo in '+country.fields.countryName"
         >
       </router-link>
@@ -32,12 +32,6 @@ export default Vue.extend({
       this.internationalData = res.data.items;
       this.images = res.data.includes.Asset;
     });
-  },
-  methods: {
-    findImageSrcById(id: number): string {
-      const url = this.images.filter(image => image.sys.id === id);
-      return url[0].fields.file.url + "?w=768";
-    }
   }
 });
 </script>
