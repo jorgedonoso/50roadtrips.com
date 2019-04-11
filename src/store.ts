@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     USA: [],
-    International: []
+    International: [],
   },
   mutations: {
     setUSAData(state, payload) {
@@ -15,7 +15,7 @@ export default new Vuex.Store({
     },
     setInternationalData(state, payload) {
       state.International = payload;
-    }
+    },
   },
   actions: {
     GET_USA_DATA({ state, commit }) {
@@ -23,7 +23,7 @@ export default new Vuex.Store({
           if (state.USA.length > 0) {
               resolve(state.USA);
           } else {
-            axios.get(process.env.VUE_APP_USA_CONTENT_ENDPOINT).then((res)=>{
+            axios.get(process.env.VUE_APP_USA_CONTENT_ENDPOINT).then((res) => {
               commit('setUSAData', res);
               resolve(res);
             });
@@ -35,13 +35,13 @@ export default new Vuex.Store({
           if (state.International.length > 0) {
               resolve(state.International);
           } else {
-            axios.get(process.env.VUE_APP_INTERNATIONAL_CONTENT_ENDPOINT).then((res)=>{
+            axios.get(process.env.VUE_APP_INTERNATIONAL_CONTENT_ENDPOINT).then((res) => {
               commit('setInternationalData', res);
               resolve(res);
             });
           }
       });
-    }
+    },
   },
   getters: {
     getUSA(state) {
@@ -49,6 +49,6 @@ export default new Vuex.Store({
     },
     getInternational(state) {
       return state.International;
-    }
-  }
+    },
+  },
 });

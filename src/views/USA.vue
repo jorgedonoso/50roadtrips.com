@@ -6,21 +6,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import LocationsTable from '@/components/LocationsTable.vue';
+import Vue from "vue";
+import LocationsTable from "@/components/LocationsTable.vue";
 
 export default Vue.extend({
-  name: 'USA',
   components: {
-    LocationsTable,
+    LocationsTable
   },
-  data: function(){
+  data() {
     return {
       USA: []
-    }
+    };
   },
-  created(){
-    this.$store.dispatch("GET_USA_DATA").then((res) => {
+  created() {
+    this.$store.dispatch("GET_USA_DATA").then(res => {
       this.USA = res.data.items;
     });
   }

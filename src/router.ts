@@ -24,11 +24,11 @@ export default new Router({
     {
       path: '/international',
       name: 'international',
-      component: International
+      component: International,
     },
-    { 
-      path: '/international/:country', 
-      component: Country
-    }
+    {
+      path: '/international/:country',
+      component: Country,
+    },
   ],
 });

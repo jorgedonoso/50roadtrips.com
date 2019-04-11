@@ -22,8 +22,8 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'LocationsTable',
-  props:{
-    data: Array
-  }
+  props: {
+    data: Array,
+  },
 });
 </script>

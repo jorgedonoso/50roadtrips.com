@@ -17,21 +17,20 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "USA",
-  data: function() {
+  data() {
     return {
       internationalData: [] as any[],
-      images: [] as any[]
+      images: [] as any[],
     };
   },
   created() {
-    this.$store.dispatch("GET_INTERNATIONAL_DATA").then(res => {
+    this.$store.dispatch('GET_INTERNATIONAL_DATA').then((res) => {
       this.internationalData = res.data.items;
       this.images = res.data.includes.Asset;
     });
-  }
+  },
 });
 </script>
