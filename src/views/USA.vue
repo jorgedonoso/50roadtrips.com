@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <h1>United States</h1>
-    <locations-table :data="USA" />
+  <div class="row">
+    <div class="col-12">
+      <h1>United States</h1>
+    </div>
+    <div class="col-12">
+      <locations-table :data="USA" />
+    </div>
   </div>
 </template>
 

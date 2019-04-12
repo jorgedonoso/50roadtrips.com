@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table class="table table-hover table-striped">
     <thead>
       <tr>
         <th>Title</th>
@@ -8,7 +8,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="location in data" :key="location.id">
+      <tr
+        v-for="location in data"
+        :key="location.id"
+      >
         <td>{{location.fields.title}}</td>
         <td>{{location.fields.state}}</td>
         <td>{{location.fields.city}}</td>
@@ -18,12 +21,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
 
 export default Vue.extend({
-  name: 'LocationsTable',
+  name: "LocationsTable",
   props: {
-    data: Array,
-  },
+    data: Array
+  }
 });
 </script>
