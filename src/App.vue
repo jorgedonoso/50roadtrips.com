@@ -9,25 +9,20 @@
     >
       <router-view />
     </transition>
-    <Footer />
   </div>
 </template>
 <script lang="ts">
-import Vue from 'vue';
-import Footer from '@/components/Footer.vue';
+import Vue from "vue";
 
 export default Vue.extend({
-  components: {
-    Footer,
-  },
   data() {
     return {
       menu: [
-        { label: 'United States', to: '/united-states' },
-        { label: 'International', to: '/international' },
-      ],
+        { label: "United States", to: "/united-states" },
+        { label: "International", to: "/international" }
+      ]
     };
-  },
+  }
 });
 </script>
 <style>
