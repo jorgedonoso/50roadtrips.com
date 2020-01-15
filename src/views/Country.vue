@@ -3,11 +3,6 @@
     <div class="row">
       <div class="col-12 text-center">
         <Title>{{ capitalize($route.params.country) }}</Title>
-        <router-link
-          to="/international"
-          exact
-          class="text-center"
-        >Go Back</router-link>
       </div>
       <div
         class="col-12 my-2"
@@ -15,11 +10,12 @@
         :key="photo.sys.id"
       >
         <img
-          :src="findImageSrcById(photo.sys.id,images,1920)"
+          :src="findImageSrcById(photo.sys.id,images,1110)"
           :alt="'Visiting ' + $route.params.country"
           class="img-fluid"
         >
       </div>
+      <back-button to="/international"></back-button>
     </div>
   </Page>
 </template>
@@ -27,9 +23,10 @@
 import Vue from 'vue';
 import Page from '@/layouts/Page.vue';
 import Title from '@/components/Title.vue';
+import BackButton from '@/components/BackButton.vue';
 
 export default Vue.extend({
-  components: { Page, Title },
+  components: { Page, Title, BackButton },
   data() {
     return {
       countries: [] as any[],
