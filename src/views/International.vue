@@ -2,14 +2,14 @@
   <Page>
     <div class="row">
       <div class="col-12">
-        <h1>International</h1>
+        <h1 class="display-1 text-center">International</h1>
       </div>
       <div
-        class="col-4"
+        class="col-12 col-md-6 col-xl-4"
         v-for="country in internationalData"
         :key="country.id"
       >
-        <h2>{{country.fields.countryName}}</h2>
+        <h2 class="display-4 text-center mt-4">{{country.fields.countryName}}</h2>
         <router-link :to="'/international/' + country.fields.countryName.toLowerCase()">
 
           <img
