@@ -2,7 +2,7 @@
   <Page>
     <div class="row">
       <div class="col-12">
-        <h1>United States</h1>
+        <Title>United States</Title>
       </div>
       <div class="col-12">
         <locations-table :data="USA" />
@@ -15,11 +15,13 @@
 import Vue from 'vue';
 import Page from '@/layouts/Page.vue';
 import LocationsTable from '@/components/LocationsTable.vue';
+import Title from '@/components/Title.vue';
 
 export default Vue.extend({
   components: {
     LocationsTable,
     Page,
+    Title,
   },
   data() {
     return {
