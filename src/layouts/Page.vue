@@ -1,10 +1,26 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <ul class="nav justify-content-center my-5">
+  <div>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end shadow">
+      <a
+        class="navbar-brand mr-auto"
+        href="/"
+      >50 Roadtrips</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        @click="expandNavbar=!expandNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div
+        class="collapse navbar-collapse flex-grow-0"
+        :class="{'show':expandNavbar}"
+      >
+        <ul class="navbar-nav text-right">
           <li
-            class="nav-item"
+            class="nav-item active"
             v-for="(item, index) in menu"
             :key="index"
           >
@@ -15,9 +31,12 @@
           </li>
         </ul>
       </div>
+    </nav>
+
+    <div class="container-fluid pt-4">
+      <slot></slot>
+      <Footer />
     </div>
-    <slot></slot>
-    <Footer />
   </div>
 </template>
 <script lang="ts">
@@ -30,8 +49,8 @@ export default Vue.extend({
   },
   data() {
     return {
+      expandNavbar: false,
       menu: [
-        { label: 'Home', to: '/' },
         { label: 'United States', to: '/united-states' },
         { label: 'International', to: '/international' },
       ],
