@@ -20,7 +20,8 @@
       >
         <ul class="navbar-nav text-right">
           <li
-            class="nav-item active"
+            class="nav-item"
+            :class="{'active':item.to==$route.path}"
             v-for="(item, index) in menu"
             :key="index"
           >
