@@ -10,7 +10,7 @@
         :key="photo.sys.id"
       >
         <img
-          :src="findImageSrcById(photo.sys.id,images,1110)"
+          :src="findImageSrcById(photo.sys.id,images,1920)"
           :alt="'Visiting ' + $route.params.country"
           class="img-fluid"
         >

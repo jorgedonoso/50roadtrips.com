@@ -12,7 +12,7 @@
         <sub-title>{{country.fields.countryName}}</sub-title>
         <router-link :to="'/international/' + country.fields.countryName.toLowerCase()">
           <img
-            :src="findImageSrcById(country.fields.cover.sys.id, images,450)"
+            :src="findImageSrcById(country.fields.cover.sys.id, images,768)"
             :alt="'photo in '+country.fields.countryName"
             class="img-fluid"
           >
