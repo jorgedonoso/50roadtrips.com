@@ -13,7 +13,7 @@
             v-for="(m, index) in markers"
             :position="m.position"
             :clickable="true"
-            :draggable="true"
+            :draggable="false"
             :animation="2"
             @click="handleClick(m.photoId)"
           />
