@@ -3,6 +3,21 @@
     <div class="row">
       <div class="col-12">
         <Title>United States</Title>
+        <GmapMap
+          :center="{lat:39.876916, lng: -101.351749}"
+          :zoom="3"
+          style="width: 100%; height: 500px"
+        >
+          <GmapMarker
+            :key="index"
+            v-for="(m, index) in markers"
+            :position="m.position"
+            :clickable="true"
+            :draggable="true"
+            :animation="2"
+            @click="handleClick(m.photoId)"
+          />
+        </GmapMap>
       </div>
       <div class="col-12">
         <locations-table :data="USA" />
@@ -16,6 +31,7 @@ import Vue from 'vue';
 import Page from '@/layouts/Page.vue';
 import LocationsTable from '@/components/LocationsTable.vue';
 import Title from '@/components/Title.vue';
+import Marker from '@/models/Marker';
 
 export default Vue.extend({
   components: {
@@ -26,12 +42,27 @@ export default Vue.extend({
   data() {
     return {
       USA: [],
+      markers: [] as Marker[],
     };
   },
   created() {
     this.$store.dispatch('GET_USA_DATA').then((res) => {
       this.USA = res.data.items;
+      res.data.items.forEach((element: any) => {
+        this.markers.push(
+          new Marker(
+            element.fields.coordinates.lat,
+            element.fields.coordinates.lon,
+            element.fields.photo.sys.id,
+          ),
+        );
+      });
     });
+  },
+  methods: {
+    handleClick(id: any) {
+      this.$router.push('/united-states/' + id);
+    },
   },
 });
 </script>
