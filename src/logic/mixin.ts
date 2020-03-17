@@ -13,7 +13,17 @@ Vue.mixin({
             return src;
         },
         capitalize(input: string) {
-            return input.charAt(0).toUpperCase() + input.slice(1);
+
+            // Uppercase the first letter by default.
+            let out = input.charAt(0).toUpperCase() + input.slice(1);
+
+            // Uppercase all letters if there's a match for one of these countries.
+            const allCapsCountries: string[] = ['USA', 'UAE'];
+            if (allCapsCountries.indexOf(input.toUpperCase()) > -1) {
+                out = input.toUpperCase();
+            }
+
+            return out;
         },
     },
 });
