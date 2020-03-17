@@ -21,7 +21,7 @@
         <ul class="navbar-nav text-right">
           <li
             class="nav-item"
-            :class="{'active':item.to==$route.path}"
+            :class="{'active':isLinkActive(item.to,$route.path)}"
             v-for="(item, index) in menu"
             :key="index"
           >
@@ -57,5 +57,22 @@ export default Vue.extend({
       ],
     };
   },
+  methods: {
+    isLinkActive(anyPath: string, actualPath: string) {
+      // This is to remove url variables after the relevant path.
+      // Ex: "/international/japan" should still highlight the "International" tab.
+      const anyPathLength: number = anyPath.length;
+      const trimmedActualPath: string = actualPath.substr(0, anyPathLength);
+
+      return anyPath === trimmedActualPath;
+    },
+  },
 });
 </script>
+<style>
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
