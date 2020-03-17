@@ -9,7 +9,7 @@
           v-show="images.length"
           :src="findImageSrcById($route.params.id, images,1920)"
           :alt="'photo somewhere '"
-          class="img-fluid"
+          class="img-fluid w-100"
         >
       </div>
       <back-button to="/united-states"></back-button>
