@@ -4,11 +4,13 @@
       <div class="col-12 text-center">
         <Title>{{ capitalize($route.params.country) }}</Title>
       </div>
+      <back-button to="/international"></back-button>
       <div
         class="col-12 my-2"
         v-for="photo in imagesForCountry"
         :key="photo.sys.id"
       >
+
         <img
           :src="findImageSrcById(photo.sys.id,images,1920)"
           :alt="'Visiting ' + $route.params.country"
