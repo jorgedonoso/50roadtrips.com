@@ -5,8 +5,10 @@
         <Title>United States</Title>
         <GmapMap
           :center="{lat:39.876916, lng: -101.351749}"
-          :zoom="3"
+          :zoom="5"
           style="width: 100%; height: 500px"
+          map-type-id="hybrid"
+          :labels="true"
         >
           <GmapMarker
             :key="index"
