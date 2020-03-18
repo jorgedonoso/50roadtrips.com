@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end shadow">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end shadow fixed-top">
       <a
         class="navbar-brand mr-auto"
         href="/"
@@ -34,7 +34,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid pt-4">
+    <div class="container-fluid pt-4 mt-5">
       <slot></slot>
       <Footer />
     </div>
