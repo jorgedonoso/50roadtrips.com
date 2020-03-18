@@ -3,12 +3,9 @@
     <thead>
       <tr>
         <th>State</th>
-        <th>City</th>
+        <th class="d-none d-md-table-cell">City</th>
         <th>Title</th>
-        <th>Lon</th>
-        <th>Lat</th>
-        <th>Map</th>
-        <th>Image</th>
+        <th>Photo</th>
       </tr>
     </thead>
     <tbody>
@@ -17,18 +14,10 @@
         :key="location.id"
       >
         <td>{{location.fields.state}}</td>
-        <td>{{location.fields.city}}</td>
+        <td class="d-none d-md-table-cell">{{location.fields.city}}</td>
         <td>{{location.fields.title}}</td>
-        <td>{{location.fields.coordinates.lon}}</td>
-        <td>{{location.fields.coordinates.lat}}</td>
         <td>
-          <a
-            :href="'https://www.google.com/maps/place/'+location.fields.coordinates.lat+','+location.fields.coordinates.lon"
-            target="_blank"
-          >Map</a>
-        </td>
-        <td>
-          <router-link :to="'/united-states/' + location.fields.photo.sys.id">Image</router-link>
+          <router-link :to="'/united-states/' + location.fields.photo.sys.id">Photo</router-link>
         </td>
       </tr>
     </tbody>
