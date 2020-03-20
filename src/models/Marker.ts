@@ -1,6 +1,4 @@
 export default class Marker {
-
-    // props.
     public photoId: number;
     public position: {
         lat: number;
