@@ -5,7 +5,7 @@
         <th class="d-table-cell d-md-none">Location</th>
         <th class="d-none d-md-table-cell">State</th>
         <th class="d-none d-md-table-cell">City</th>
-        <th>Title</th>
+        <th class="d-none d-md-table-cell">Title</th>
         <th>Photo</th>
       </tr>
     </thead>
@@ -14,10 +14,10 @@
         v-for="location in data"
         :key="location.id"
       >
-        <td class="d-table-cell d-md-none">{{location.fields.city}}, {{location.fields.state}}</td>
+        <td class="d-table-cell d-md-none">{{location.fields.title}} <span class="small d-block">in {{location.fields.city}}, {{location.fields.state}}</span></td>
         <td class="d-none d-md-table-cell">{{location.fields.state}}</td>
         <td class="d-none d-md-table-cell">{{location.fields.city}}</td>
-        <td>{{location.fields.title}}</td>
+        <td class="d-none d-md-table-cell">{{location.fields.title}}</td>
         <td>
           <router-link :to="'/united-states/' + location.fields.photo.sys.id">Photo</router-link>
         </td>
