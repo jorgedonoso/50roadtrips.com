@@ -33,6 +33,10 @@ export default Vue.extend({
             this.locations = response.data.items;
             this.renderChart();
         });
+        window.addEventListener('resize', this.renderChart);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.renderChart);
     },
     methods: {
         renderChart() {
