@@ -4,7 +4,7 @@
             <div class="col-12 mb-4">
                 <Title>Statistics</Title>
             </div>
-            <div class="col-12">
+            <div class="container">
                 <div id="chart"></div>
             </div>
         </div>
