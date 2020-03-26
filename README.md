@@ -1,4 +1,10 @@
 # 50roadtrips.com
+[https://www.50roadtrips.com/](https://www.50roadtrips.com/)
+
+## Modules
+* USA
+* Statistics
+* International
 
 ## Environment Variables
 
@@ -13,3 +19,16 @@ VUE_APP_MAPS_KEY= '' // Your API Key for Google Maps.
 npm install
 npm run serve
 ```
+
+## Built With
+
+* [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework
+
+## Author
+Jorge Donoso
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
