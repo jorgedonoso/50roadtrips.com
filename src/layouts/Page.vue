@@ -14,7 +14,7 @@
                         class="nav-item dropdown" 
                         :class="{ active: isLinkActive('/'+item.label, $route.path) }">
                         
-                        <a :class="['nav-link','dropdown-toggle']" href="#" @click="setSubnav(item.label)">{{item.label}}</a>
+                        <a class="nav-link dropdown-toggle" href="#" @click="setSubnav(item.label,$event)">{{item.label}}</a>
 
                         <div class="dropdown-menu" :class="{ show: expandSub == item.label }">
                             <router-link v-for="(child,subKey) in item.children" :key="subKey" :to="child.to" class="dropdown-item" exact>{{child.label}}</router-link>
@@ -67,6 +67,12 @@ export default Vue.extend({
             }
         }
     },
+    created () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
     methods: {
         isLinkActive(anyPath: string, actualPath: string) {
 
@@ -80,9 +86,14 @@ export default Vue.extend({
 
             return anyPath.replace(' ', '-').toLowerCase() === trimmedActualPath.toLowerCase();
         },
-        setSubnav(subClicked: string) {
+        setSubnav(subClicked: string, e: any) {
+            e.preventDefault();
             this.expandSub = subClicked === this.expandSub ? '' : subClicked;
         },
+        handleScroll(){
+            this.expandSub = '';
+            this.expandNavbar = false;
+        }
     },
 });
 </script>
