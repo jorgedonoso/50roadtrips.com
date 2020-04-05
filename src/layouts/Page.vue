@@ -1,32 +1,25 @@
 <template>
     <div>
-        <nav
-            class="navbar navbar-expand-sm bg-light navbar-light justify-content-end shadow fixed-top"
-        >
+        <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end shadow fixed-top">
             <a class="navbar-brand mr-auto" href="/"><font-awesome-icon icon="map-signs" /> 50 Roadtrips</a>
 
-            <button
-                class="navbar-toggler"
-                type="button"
-                @click="expandNavbar = !expandNavbar"
-            >
+            <button class="navbar-toggler" type="button" @click="expandNavbar = !expandNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div
-                class="collapse navbar-collapse flex-grow-0"
-                :class="{ show: expandNavbar }"
-            >
+            <div class="collapse navbar-collapse flex-grow-0" :class="{ show: expandNavbar }">
                 <ul class="navbar-nav text-right">
-                    <li
-                        class="nav-item"
-                        :class="{ active: isLinkActive(item.to, $route.path) }"
-                        v-for="(item, index) in menu"
-                        :key="index"
-                    >
-                        <router-link :to="item.to" class="nav-link">{{
-                            item.label
-                        }}</router-link>
+
+                    <li v-for="(item, index) in menu" :key="index"
+                        class="nav-item dropdown" 
+                        :class="{ active: isLinkActive('/'+item.label, $route.path) }">
+                        
+                        <a :class="['nav-link','dropdown-toggle']" href="#" @click="setSubnav(item.label)">{{item.label}}</a>
+
+                        <div class="dropdown-menu" :class="{ show: expandSub == item.label }">
+                            <router-link v-for="(child,subKey) in item.children" :key="subKey" :to="child.to" class="dropdown-item" exact>{{child.label}}</router-link>
+                        </div>
+
                     </li>
                 </ul>
             </div>
@@ -48,16 +41,35 @@ export default Vue.extend({
     },
     data() {
         return {
-            expandNavbar: false,
+            expandNavbar: false as boolean,
+            expandSub: '' as string,
             menu: [
-                { label: 'United States', to: '/united-states' },
-                { label: 'Statistics', to: '/statistics' },
-                { label: 'International', to: '/international' },
+                { label: 'United States',
+                    children: [
+                        { label: 'Gallery', to: '/united-states' },
+                        { label: 'Statistics', to: '/united-states/statistics' },
+                    ],
+                },
+                { label: 'International',
+                    children: [{ label: 'Gallery', to: '/international' }],
+                },
             ],
         };
     },
+    mounted() {
+        const children = document.querySelectorAll('.dropdown-item');
+        if (children) {
+            for (const child of children) {
+                child.addEventListener('click', (event) => {
+                    this.expandSub = '';
+                    this.expandNavbar = false;
+                });
+            }
+        }
+    },
     methods: {
         isLinkActive(anyPath: string, actualPath: string) {
+
             // This is to remove url variables after the relevant path.
             // Ex: "/international/japan" should still highlight the "International" tab.
             const anyPathLength: number = anyPath.length;
@@ -66,7 +78,10 @@ export default Vue.extend({
                 anyPathLength,
             );
 
-            return anyPath === trimmedActualPath;
+            return anyPath.replace(' ', '-').toLowerCase() === trimmedActualPath.toLowerCase();
+        },
+        setSubnav(subClicked: string) {
+            this.expandSub = subClicked === this.expandSub ? '' : subClicked;
         },
     },
 });

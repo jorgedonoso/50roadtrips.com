@@ -24,6 +24,10 @@ export default new Router({
             component: USA,
         },
         {
+            path: '/united-states/statistics',
+            component: Statistics,
+        },
+        {
             path: '/united-states/:id',
             component: Photo,
         },
@@ -35,10 +39,6 @@ export default new Router({
         {
             path: '/international/:country',
             component: Country,
-        },
-        {
-            path: '/statistics',
-            component: Statistics,
         },
     ],
 });
