@@ -6,6 +6,7 @@ import Photo from './views/Photo.vue';
 import International from './views/International.vue';
 import Country from './views/Country.vue';
 import Statistics from './views/Statistics.vue';
+import Video from './views/Video.vue';
 
 Vue.use(Router);
 
@@ -28,6 +29,14 @@ export default new Router({
             component: Statistics,
         },
         {
+            path: '/united-states/video',
+            component: Video,
+            props: {
+                title: 'United States Video',
+                videoId: process.env.VUE_APP_USA_VIDEO,
+            },
+        },
+        {
             path: '/united-states/:id',
             component: Photo,
         },
@@ -35,6 +44,14 @@ export default new Router({
             path: '/international',
             name: 'international',
             component: International,
+        },
+        {
+            path: '/international/video',
+            component: Video,
+            props: {
+                title: 'Honeymoon',
+                videoId: process.env.VUE_APP_INTERNATIONAL_VIDEO,
+            },
         },
         {
             path: '/international/:country',

@@ -20,6 +20,11 @@
             class="btn d-block d-md-inline btn-light m-1"
             exact
           ><font-awesome-icon icon="globe-asia" /> International</router-link>
+          <router-link
+            to="/international/video"
+            class="btn d-block d-md-inline btn-success m-1"
+            exact
+          ><font-awesome-icon icon="glass-cheers" /> Honeymoon</router-link>
         </div>
       </div>
     </div>

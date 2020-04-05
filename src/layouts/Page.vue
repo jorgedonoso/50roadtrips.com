@@ -48,10 +48,14 @@ export default Vue.extend({
                     children: [
                         { label: 'Gallery', to: '/united-states' },
                         { label: 'Statistics', to: '/united-states/statistics' },
+                        { label: 'Video', to: '/united-states/video' },
                     ],
                 },
                 { label: 'International',
-                    children: [{ label: 'Gallery', to: '/international' }],
+                    children: [
+                        { label: 'Gallery', to: '/international' },
+                        { label: 'Honeymoon', to: '/international/video' },
+                    ],
                 },
             ],
         };
@@ -67,10 +71,10 @@ export default Vue.extend({
             }
         }
     },
-    created () {
+    created() {
         window.addEventListener('scroll', this.handleScroll);
     },
-    destroyed () {
+    destroyed() {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
@@ -90,10 +94,10 @@ export default Vue.extend({
             e.preventDefault();
             this.expandSub = subClicked === this.expandSub ? '' : subClicked;
         },
-        handleScroll(){
+        handleScroll() {
             this.expandSub = '';
             this.expandNavbar = false;
-        }
+        },
     },
 });
 </script>
