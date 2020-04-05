@@ -1,1 +1,1 @@
-declare module "google-charts/dist/googleCharts";
+declare module 'google-charts/dist/googleCharts';

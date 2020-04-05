@@ -3,7 +3,7 @@
         <nav
             class="navbar navbar-expand-sm bg-light navbar-light justify-content-end shadow fixed-top"
         >
-            <a class="navbar-brand mr-auto" href="/">50 Roadtrips</a>
+            <a class="navbar-brand mr-auto" href="/"><font-awesome-icon icon="map-signs" /> 50 Roadtrips</a>
 
             <button
                 class="navbar-toggler"

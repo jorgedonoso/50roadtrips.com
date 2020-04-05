@@ -14,12 +14,12 @@
             to="/united-states"
             class="btn d-block d-md-inline btn-dark m-1"
             exact
-          >United States</router-link>
+          ><font-awesome-icon icon="flag-usa" /> United States</router-link>
           <router-link
             to="/international"
             class="btn d-block d-md-inline btn-light m-1"
             exact
-          >International</router-link>
+          ><font-awesome-icon icon="globe-asia" /> International</router-link>
         </div>
       </div>
     </div>
