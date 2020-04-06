@@ -7,6 +7,7 @@ import International from './views/International.vue';
 import Country from './views/Country.vue';
 import Statistics from './views/Statistics.vue';
 import Video from './views/Video.vue';
+import Error from './views/Error.vue';
 
 Vue.use(Router);
 
@@ -56,6 +57,10 @@ export default new Router({
         {
             path: '/international/:country',
             component: Country,
+        },
+        {
+            path: '/*',
+            component: Error,
         },
     ],
 });

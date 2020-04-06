@@ -12,10 +12,17 @@ import {
     faFlagUsa,
     faGlobeAsia,
     faGlassCheers,
+    faCloudShowersHeavy,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faMapSigns, faFlagUsa, faGlobeAsia, faGlassCheers);
+library.add(
+    faMapSigns,
+    faFlagUsa,
+    faGlobeAsia,
+    faGlassCheers,
+    faCloudShowersHeavy,
+);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
