@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import USA from './views/USA.vue';
-import Photo from './views/Photo.vue';
-import International from './views/International.vue';
-import Country from './views/Country.vue';
-import Statistics from './views/Statistics.vue';
-import Video from './views/Video.vue';
-import Error from './views/Error.vue';
+import Home from '@/views/Home.vue';
+import USA from '@/views/USA.vue';
+import Photo from '@/views/Photo.vue';
+import International from '@/views/International.vue';
+import Country from '@/views/Country.vue';
+import Statistics from '@/views/Statistics.vue';
+import Video from '@/views/Video.vue';
+import Error from '@/views/Error.vue';
 
 Vue.use(Router);
 
