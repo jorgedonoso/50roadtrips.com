@@ -1,5 +1,5 @@
 <template>
-  <h1 class="display-1 mb-4 text-center">
+  <h1 class="display-1 mb-5 mt-3 text-center">
     <slot></slot>
   </h1>
 </template>
