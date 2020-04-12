@@ -4,9 +4,13 @@
             <div class="col-12 mb-4">
                 <Title>{{title}}</Title>
             </div>
-            <div class="col-12 text-center">
-                <div class="videoWrapper">
-                    <iframe :src="`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="videoWrapper">
+                        <iframe :src="`https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
