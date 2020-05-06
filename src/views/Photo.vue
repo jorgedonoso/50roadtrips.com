@@ -1,8 +1,9 @@
 <template>
-  <Page>
+  <Page v-show="title">
+     <div class="container">
     <div class="row">
       <div class="col-12">
-        <Title>{{title}}</Title>
+        <Title>{{title}} in {{location}}</Title>
       </div>
       <div class="col-12 my-2">
         <img
@@ -13,6 +14,7 @@
         >
       </div>
       <back-button to="/united-states"></back-button>
+    </div>
     </div>
   </Page>
 </template>
@@ -32,16 +34,25 @@ export default Vue.extend({
   data() {
     return {
       title: '',
+      location: '',
       images: [],
     };
   },
   created() {
-    this.$store.dispatch('GET_USA_DATA').then((res) => {
-      this.title = res.data.items.find((loc: any) => {
-        return loc.fields.photo.sys.id === this.$route.params.id;
-      }).fields.title;
 
+    this.$store.dispatch('GET_USA_DATA').then((res) => {
+      
+      const data = res.data.items.find((loc: any) => {
+        return loc.fields.photo.sys.id === this.$route.params.id;
+      });
+
+      // Redirect if no data.
+      if (!data) { this.$router.push('/united-states/'); }
+
+      this.title = data.fields.title;
+      this.location = data.fields.city + ', ' + data.fields.state;
       this.images = res.data.includes.Asset;
+
     });
   },
 });
