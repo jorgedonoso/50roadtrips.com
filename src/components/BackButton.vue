@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 text-center my-2">
-    <router-link :to="to">
-      <button class="btn btn-primary btn-block">Go Back</button>
+    <router-link :to="to" class="btn btn-primary btn-block">
+      Go Back
     </router-link>
   </div>
 </template>
