@@ -6,6 +6,7 @@
         <th class="d-none d-md-table-cell">State</th>
         <th class="d-none d-md-table-cell">City</th>
         <th class="d-none d-md-table-cell">Title</th>
+        <th class="d-none d-md-table-cell">Resolution</th>
         <th>Photo</th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
         <td class="d-none d-md-table-cell">{{location.fields.state}}</td>
         <td class="d-none d-md-table-cell">{{location.fields.city}}</td>
         <td class="d-none d-md-table-cell">{{location.fields.title}}</td>
+        <td class="d-none d-md-table-cell">{{imageSizeVerbiage(findImageById(location.fields.photo.sys.id,images).width, findImageById(location.fields.photo.sys.id,images).height)}}</td>
         <td>
           <router-link :to="'/united-states/' + location.fields.photo.sys.id">Photo</router-link>
         </td>
@@ -33,6 +35,18 @@ export default Vue.extend({
   name: 'LocationsTable',
   props: {
     data: Array,
+    images: Array,
+  },
+  methods: {
+    imageSizeVerbiage(width: number, height: number) {
+
+      const size = width * height;
+      let res = 'High';
+
+      if (size < 2073600) {res = 'Low'; } else if (size < 12000000) {res = 'Medium'; }
+
+      return res;
+    },
   },
 });
 </script>

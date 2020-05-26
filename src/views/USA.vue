@@ -24,7 +24,7 @@
       <div class="col-12">
         <SubTitle>Locations</SubTitle>
         <div class="container">
-          <locations-table :data="USA" />
+          <locations-table :data="USA" :images="images" />
         </div>
       </div>
     </div>
@@ -49,12 +49,14 @@ export default Vue.extend({
   data() {
     return {
       USA: [],
+      images: [],
       markers: [] as Marker[],
     };
   },
   created() {
     this.$store.dispatch('GET_USA_DATA').then((res) => {
       this.USA = res.data.items;
+      this.images = res.data.includes.Asset;
       res.data.items.forEach((element: any) => {
         this.markers.push(
           new Marker(

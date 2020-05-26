@@ -2,6 +2,16 @@ import Vue from 'vue';
 
 Vue.mixin({
     methods: {
+        findImageById(id: number, images: any[]): string {
+            let src: any;
+
+            if (images.length > 0) {
+                const url = images.filter((image) => image.sys.id === id);
+                src = url[0].fields.file.details.image;
+            }
+
+            return src;
+        },
         findImageSrcById(id: number, images: any[], width: number): string {
             let src: string = '';
 
@@ -13,7 +23,6 @@ Vue.mixin({
             return src;
         },
         capitalize(input: string) {
-
             // Uppercase the first letter by default.
             let out = input.charAt(0).toUpperCase() + input.slice(1);
 
