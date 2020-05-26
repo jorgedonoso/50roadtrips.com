@@ -5,6 +5,7 @@
         <th class="d-table-cell d-md-none">Location</th>
         <th class="d-none d-md-table-cell">State</th>
         <th class="d-none d-md-table-cell">City</th>
+        <th class="d-none d-md-table-cell">Category</th>
         <th class="d-none d-md-table-cell">Title</th>
         <th class="d-none d-md-table-cell">Resolution</th>
         <th>Photo</th>
@@ -18,6 +19,7 @@
         <td class="d-table-cell d-md-none">{{location.fields.title}} <span class="small d-block">in {{location.fields.city}}, {{location.fields.state}}</span></td>
         <td class="d-none d-md-table-cell">{{location.fields.state}}</td>
         <td class="d-none d-md-table-cell">{{location.fields.city}}</td>
+        <td class="d-none d-md-table-cell">{{location.fields.category?location.fields.category:"-"}}</td>
         <td class="d-none d-md-table-cell">{{location.fields.title}}</td>
         <td class="d-none d-md-table-cell" v-html="imageSizeVerbiage(findImageById(location.fields.photo.sys.id,images).width, findImageById(location.fields.photo.sys.id,images).height)"></td>
         <td>
