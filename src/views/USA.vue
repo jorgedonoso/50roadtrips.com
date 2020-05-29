@@ -24,7 +24,7 @@
       <div class="col-12">
         <SubTitle>Locations</SubTitle>
         <div class="container">
-          <locations-table :data="USA" :images="images" />
+          <locations-table :data="USA" :images="Images" />
         </div>
       </div>
     </div>
@@ -38,6 +38,7 @@ import LocationsTable from '@/components/LocationsTable.vue';
 import Title from '@/components/Title.vue';
 import SubTitle from '@/components/SubTitle.vue';
 import Marker from '@/models/Marker';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
   components: {
@@ -48,25 +49,26 @@ export default Vue.extend({
   },
   data() {
     return {
-      USA: [],
-      images: [],
       markers: [] as Marker[],
     };
   },
-  created() {
-    this.$store.dispatch('GET_USA_DATA').then((res) => {
-      this.USA = res.data.items;
-      this.images = res.data.includes.Asset;
-      res.data.items.forEach((element: any) => {
-        this.markers.push(
-          new Marker(
-            element.fields.coordinates.lat,
-            element.fields.coordinates.lon,
-            element.fields.photo.sys.id,
-          ),
-        );
-      });
+  computed: {
+    ...mapState(['USA', 'Images']),
+  },
+  async created() {
+
+    await this.$store.dispatch('GET_USA_DATA');
+
+    this.USA.forEach((element: any) => {
+      this.markers.push(
+        new Marker(
+          element.fields.coordinates.lat,
+          element.fields.coordinates.lon,
+          element.fields.photo.sys.id,
+        ),
+      );
     });
+
   },
   methods: {
     handleClick(id: any) {

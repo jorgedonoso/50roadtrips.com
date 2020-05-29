@@ -17,23 +17,18 @@ import Page from '@/layouts/Page.vue';
 import Title from '@/components/Title.vue';
 import { GoogleCharts } from 'google-charts/dist/googleCharts';
 import Location from '@/models/Location';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
     components: {
         Page,
         Title,
     },
-    data() {
-        return {
-            locations: [] as Location[],
-        };
-    },
-    created() {
-        this.$store.dispatch('GET_USA_DATA').then((response) => {
-            this.locations = response.data.items;
-            this.renderChart();
-        });
+    computed: mapState(['USA']),
+    async created() {
+        await this.$store.dispatch('GET_USA_DATA');
         window.addEventListener('resize', this.renderChart);
+        this.renderChart();
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.renderChart);
@@ -62,7 +57,7 @@ export default Vue.extend({
 
             // Calculates count for each category.
             const preData = categories.map((item, index) => {
-                const countOfItem = this.locations.filter(
+                const countOfItem = this.USA.filter(
                     (location: Location) => {
                         return location.fields.category === item.singular
                             ? true

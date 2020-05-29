@@ -7,11 +7,9 @@
       </div>
       <div class="col-12 my-2">
         <img
-          v-show="images.length"
-          :src="findImageSrcById($route.params.id, images,1920)"
+          :src="findImageSrcById($route.params.id, Images, 1920)"
           :alt="'photo somewhere '"
-          class="img-fluid w-100"
-        >
+          class="img-fluid w-100" />
       </div>
       <back-button to="/united-states"></back-button>
     </div>
@@ -24,6 +22,7 @@ import Vue from 'vue';
 import Page from '@/layouts/Page.vue';
 import Title from '@/components/Title.vue';
 import BackButton from '@/components/BackButton.vue';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
   components: {
@@ -35,25 +34,27 @@ export default Vue.extend({
     return {
       title: '',
       location: '',
-      images: [],
     };
   },
-  created() {
+  computed: {
+    ...mapState(['USA', 'Images']),
+  },
+  async created() {
 
-    this.$store.dispatch('GET_USA_DATA').then((res) => {
-      
-      const data = res.data.items.find((loc: any) => {
-        return loc.fields.photo.sys.id === this.$route.params.id;
-      });
+    await this.$store.dispatch('GET_USA_DATA');
 
-      // Redirect if no data.
-      if (!data) { this.$router.push('/united-states/'); }
-
-      this.title = data.fields.title;
-      this.location = data.fields.city + ', ' + data.fields.state;
-      this.images = res.data.includes.Asset;
-
+    const locationData = this.USA.find((loc: any) => {
+      return loc.fields.photo.sys.id === this.$route.params.id;
     });
+
+    // Redirect if no data, else grab needed fields.
+    if (!locationData) {
+      this.$router.push('/united-states/');
+    } else {
+      this.title = locationData.fields.title;
+      this.location = locationData.fields.city + ', ' + locationData.fields.state;
+    }
+
   },
 });
 </script>
