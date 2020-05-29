@@ -6,8 +6,10 @@ Vue.mixin({
             let src: any;
 
             if (images.length > 0) {
-                const url = images.filter((image) => image.sys.id === id);
-                src = url[0].fields.file.details.image;
+                const url = images.find((image) => image.sys.id === id);
+                if (url) {
+                    src = url.fields.file.details.image;
+                }
             }
 
             return src;
@@ -16,8 +18,10 @@ Vue.mixin({
             let src: string = '';
 
             if (images.length > 0) {
-                const url = images.filter((image) => image.sys.id === id);
-                src = url[0].fields.file.url + '?w=' + width;
+                const url = images.find((image) => image.sys.id === id);
+                if (url) {
+                    src = url.fields.file.url + '?w=' + width;
+                }
             }
 
             return src;
