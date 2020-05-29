@@ -3,7 +3,7 @@ import Vue from 'vue';
 Vue.mixin({
     methods: {
         findImageById(id: number, images: any[]): string {
-            let src: any;
+            let src: any = {};
 
             if (images.length > 0) {
                 const url = images.find((image) => image.sys.id === id);
