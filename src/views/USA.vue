@@ -24,7 +24,7 @@
       <div class="col-12">
         <SubTitle>Locations</SubTitle>
         <div class="container">
-          <locations-table :data="USA" :images="Images" />
+          <locations-table :data="USA" :images="USAImages" />
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@ export default Vue.extend({
     };
   },
   computed: {
-    ...mapState(['USA', 'Images']),
+    ...mapState(['USA', 'USAImages']),
   },
   async created() {
 

@@ -10,7 +10,7 @@
       
       <div class="col-12 my-2" v-for="photo in imagesForCountry" :key="photo.sys.id">
 
-        <img :src="findImageSrcById(photo.sys.id,Images,1920)"
+        <img :src="findImageSrcById(photo.sys.id,InternationalImages,1920)"
           :alt="'Visiting ' + $route.params.country"
           class="img-fluid" />
 
@@ -36,7 +36,7 @@ export default Vue.extend({
     };
   },
   computed: {
-    ...mapState(['International', 'Images']),
+    ...mapState(['International', 'InternationalImages']),
     imagesForCountry(): any {
       let res = [];
 

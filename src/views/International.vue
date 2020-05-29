@@ -14,8 +14,8 @@
           <sub-title>{{country.fields.countryName}}</sub-title>
           <router-link :to="'/international/' + country.fields.countryName.toLowerCase()">
             <img
-              :src="findImageSrcById(country.fields.cover.sys.id, Images,768)"
-              :alt="'photo in '+country.fields.countryName"
+              :src="findImageSrcById(country.fields.cover.sys.id, InternationalImages,768)"
+              :alt="'Photo in '+country.fields.countryName"
               class="img-fluid"
             >
           </router-link>
@@ -32,7 +32,7 @@ import { mapState } from 'vuex';
 
 export default Vue.extend({
   components: { Page, Title, SubTitle },
-  computed: mapState(['International', 'Images']),
+  computed: mapState(['International', 'InternationalImages']),
   async created() {
     await this.$store.dispatch('GET_INTERNATIONAL_DATA');
   },

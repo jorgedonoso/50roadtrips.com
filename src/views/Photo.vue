@@ -7,7 +7,7 @@
       </div>
       <div class="col-12 my-2">
         <img
-          :src="findImageSrcById($route.params.id, Images, 1920)"
+          :src="findImageSrcById($route.params.id, USAImages, 1920)"
           :alt="'photo somewhere '"
           class="img-fluid w-100" />
       </div>
@@ -37,7 +37,7 @@ export default Vue.extend({
     };
   },
   computed: {
-    ...mapState(['USA', 'Images']),
+    ...mapState(['USA', 'USAImages']),
   },
   async created() {
 

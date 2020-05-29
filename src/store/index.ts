@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state: {
         USA: [],
         International: [],
-        Images: [],
+        USAImages: [],
+        InternationalImages: [],
     },
     mutations: {
         setUSAData(state, payload) {
@@ -17,8 +18,11 @@ export default new Vuex.Store({
         setInternationalData(state, payload) {
             state.International = payload.data.items;
         },
-        setImagesData(state, payload) {
-            state.Images = payload.data.includes.Asset;
+        setUSAImagesData(state, payload) {
+            state.USAImages = payload.data.includes.Asset;
+        },
+        setInternationalImagesData(state, payload) {
+            state.InternationalImages = payload.data.includes.Asset;
         },
     },
     actions: {
@@ -28,7 +32,7 @@ export default new Vuex.Store({
                     .get(process.env.VUE_APP_USA_CONTENT_ENDPOINT)
                     .then((res) => {
                         commit('setUSAData', res);
-                        commit('setImagesData', res);
+                        commit('setUSAImagesData', res);
                     });
             }
         },
@@ -38,7 +42,7 @@ export default new Vuex.Store({
                     .get(process.env.VUE_APP_INTERNATIONAL_CONTENT_ENDPOINT)
                     .then((res) => {
                         commit('setInternationalData', res);
-                        commit('setImagesData', res);
+                        commit('setInternationalImagesData', res);
                     });
             }
         },
