@@ -3,15 +3,20 @@
      <div class="container">
     <div class="row">
       <div class="col-12">
-        <Title>{{title}} in {{location}}</Title>
+        <Title :sub-text="location">{{title}}</Title>
       </div>
+      
+      <back-button to="/united-states"></back-button>
+
       <div class="col-12 my-2">
         <img
           :src="findImageSrcById($route.params.id, USAImages, 1920)"
           :alt="'photo somewhere '"
           class="img-fluid w-100" />
       </div>
+      
       <back-button to="/united-states"></back-button>
+
     </div>
     </div>
   </Page>
