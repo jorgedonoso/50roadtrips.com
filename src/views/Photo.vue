@@ -8,11 +8,21 @@
       
       <back-button to="/united-states"></back-button>
 
-      <div class="col-12 my-2">
-        <img
+      <div class="col-12 my-2 text-center">
+        
+      <vue-load-image>
+        <img slot="image" 
           :src="findImageSrcById($route.params.id, USAImages, 1920)"
-          :alt="'photo somewhere '"
-          class="img-fluid w-100" />
+          alt='Photo somewhere'
+          class="img-fluid w-100"/>
+          <font-awesome-icon 
+            slot="preloader" 
+            icon="globe-americas"  
+            size="10x"
+            spin
+            class="text-secondary" />
+          <div slot="error">Can't load photo</div>
+        </vue-load-image>
       </div>
       
       <back-button to="/united-states"></back-button>
@@ -28,12 +38,14 @@ import Page from '@/layouts/Page.vue';
 import Title from '@/components/Title.vue';
 import BackButton from '@/components/BackButton.vue';
 import { mapState } from 'vuex';
+import VueLoadImage from 'vue-load-image';
 
 export default Vue.extend({
   components: {
     Page,
     Title,
     BackButton,
+    'vue-load-image': VueLoadImage,
   },
   data() {
     return {
