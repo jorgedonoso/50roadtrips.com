@@ -13,7 +13,9 @@ import {
     faGlobeAsia,
     faGlassCheers,
     faCloudShowersHeavy,
+    faGlobeAmericas,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(
@@ -22,6 +24,7 @@ library.add(
     faGlobeAsia,
     faGlassCheers,
     faCloudShowersHeavy,
+    faGlobeAmericas,
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
