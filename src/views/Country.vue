@@ -8,12 +8,20 @@
       
       <back-button to="/international"></back-button>
       
-      <div class="col-12 my-2" v-for="photo in imagesForCountry" :key="photo.sys.id">
-
-        <img :src="findImageSrcById(photo.sys.id,InternationalImages,1920)"
-          :alt="'Visiting ' + $route.params.country"
-          class="img-fluid" />
-
+      <div class="col-12 my-2 text-center" v-for="photo in imagesForCountry" :key="photo.sys.id">
+        <vue-load-image>
+          <img slot="image" 
+            :src="findImageSrcById(photo.sys.id,InternationalImages,1920)"
+            :alt="'Visiting ' + $route.params.country"
+            class="img-fluid"/>
+          <font-awesome-icon 
+            slot="preloader" 
+            icon="globe-americas" 
+            size="5x" 
+            spin 
+            class="text-secondary" />
+          <div slot="error">Can't load photo</div>
+        </vue-load-image>
       </div>
 
       <back-button to="/international"></back-button>
@@ -27,9 +35,14 @@ import Page from '@/layouts/Page.vue';
 import Title from '@/components/Title.vue';
 import BackButton from '@/components/BackButton.vue';
 import { mapState } from 'vuex';
+import VueLoadImage from 'vue-load-image';
 
 export default Vue.extend({
-  components: { Page, Title, BackButton },
+  components: {
+    Page,
+    Title,
+    BackButton,
+    'vue-load-image': VueLoadImage},
   data() {
     return {
       filteredResults: [] as any,
